@@ -1,0 +1,93 @@
+[
+  {
+    "title": "Lines of Code",
+    "tool": "PMD",
+    "rules": [{"file":"design","name":"NcssCount"}],
+    "metrics-based":true,
+    "thresholds": [30, 20, 10]
+  },{
+    "title": "Nest",
+    "tool": "Checkstyle",
+    "rules": [{"file":"","name":"NestedForDepth"}, {"file":"","name":"NestedIfDepth"}, {"file":"","name":"NestedTryDepth"}],
+    "metrics-based":true,
+    "thresholds": [3, 2, 1]
+  },{
+    "title": "Cyclomatic Number",
+    "tool": "PMD",
+    "rules": [{"file":"design","name":"CyclomaticComplexity"}],
+    "metrics-based":true,
+    "thresholds": [10, 5, 3]
+  },{
+    "title":"Naming Conventions",
+    "tool":"PMD",
+    "rules":[{"file":"codestyle","name":"ClassNamingConventions"},{"file":"codestyle","name":"MethodNamingConventions"},{"file":"codestyle","name":"VariableNamingConventions"}],
+    "metrics-based":true,
+    "thresholds":[10, 5, 0]
+  },{
+    "title": "Switch",
+    "tool": "PMD",
+    "rules": [{"file":"bestpractices","name":"DefaultLabelNotLastInSwitchStmt"}, {"file":"errorprone","name":"MissingBreakInSwitch"}, {"file":"design","name":"SwitchDensity"}, {"file":"design","name":"SwitchDensity"}, {"file":"design","name":"SwitchDensity"}, {"file":"design","name":"SwitchDensity"}, {"file":"design","name":"SwitchDensity"}, {"file":"design","name":"SwitchDensity"}, {"file":"design","name":"SwitchDensity"}, {"file":"bestpractices","name":"SwitchStmtsShouldHaveDefault"}, {"file":"performance","name":"TooFewBranchesForASwitchStatement"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Unused",
+    "tool": "PMD",
+    "rules": [{"file":"codestyle","name":"UnnecessaryLocalBeforeReturn"},{"file":"codestyle","name":"UnnecessaryReturn"},{"file":"bestpractices","name":"UnusedFormalParameter"},{"file":"bestpractices","name":"UnusedImports"},{"file":"bestpractices","name":"UnusedLocalVariable"},{"file":"bestpractices","name":"UnusedPrivateField"},{"file":"bestpractices","name":"UnusedPrivateMethod"},{"file":"codestyle","name":"UselessParentheses"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Empty",
+    "tool": "PMD",
+    "rules": [{"file":"errorprone","name":"EmptyCatchBlock"},{"file":"errorprone","name":"EmptyFinallyBlock"},{"file":"errorprone","name":"EmptyIfStmt"},{"file":"errorprone","name":"EmptyStatementBlock"},{"file":"errorprone","name":"EmptyStatementNotInLoop"},{"file":"errorprone","name":"EmptySwitchStatements"},{"file":"errorprone","name":"EmptyTryBlock"},{"file":"errorprone","name":"EmptyWhileStmt"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Simplify",
+    "tool": "PMD",
+    "rules": [{"file":"design","name":"CollapsibleIfStatements"},{"file":"bestpractices","name":"ForLoopCanBeForeach"},{"file":"design","name":"SimplifyBooleanExpressions"},{"file":"design","name":"SimplifyBooleanReturns"},{"file":"errorprone","name":"UnconditionalIfStatement"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Finalize",
+    "tool": "PMD",
+    "rules": [{"file":"design","name":"FinalFieldCouldBeStatic"},{"file":"design","name":"ImmutableField"},{"file":"codestyle","name":"LocalVariableCouldBeFinal"},{"file":"codestyle","name":"MethodArgumentCouldBeFinal"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Declaration",
+    "tool": "PMD",
+    "rules": [{"file":"codestyle","name":"FieldDeclarationsShouldBeAtStartOfClass"},{"file":"design","name":"SingularField"},{"file":"performance","name":"StringInstantiation"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Code Flow",
+    "tool": "Checkstyle",
+    "rules": [{"file":"","name":"ModifiedControlVariable"},{"file":"","name":"OneStatementPerLine"},{"file":"","name":"OuterTypeFilename"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Import",
+    "tool": "Checkstyle",
+    "rules": [{"file":"","name":"AvoidStarImport"},{"file":"","name":"AvoidStaticImport"},{"file":"","name":"RedundantImport"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Indentation",
+    "tool": "Checkstyle",
+    "rules": [{"file":"","name":"CommentsIndentation"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Magic Number",
+    "tool": "Checkstyle",
+    "rules": [{"file":"","name":"MagicNumber"}],
+    "metrics-based":false,
+    "thresholds": []
+  },{
+    "title": "Null",
+    "tool": "PMD",
+    "rules": [{"file":"errorprone","name":"BrokenNullCheck"},{"file":"errorprone","name":"CompareObjectsWithEquals"},{"file":"errorprone","name":"BrokenNullCheck"},{"file":"errorprone","name":"EqualsNull"},{"file":"errorprone","name":"UseEqualsToCompareStrings"},{"file":"errorprone","name":"UseEqualsToCompareStrings"}],
+    "metrics-based":false,
+    "thresholds": []
+  }
+]

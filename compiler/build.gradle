@@ -1,0 +1,93 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+// Apply IDE plugins
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+// Apply PMD plugin for Ape
+apply plugin: 'pmd'
+
+// Apply Checkstyle plugin for Ape
+apply plugin: 'checkstyle'
+
+// Set default encoding to UTF-8
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+// Use jdk17
+tasks.withType(JavaCompile) {
+  options.release = 17
+}
+
+repositories {
+  mavenCentral()
+
+  // Use local lib folder
+  flatDir {
+     dirs 'lib'
+  }
+}
+
+dependencies {
+  // Load JCasl2 & JComet2 from local folder
+  implementation name: 'jcasl2'
+  implementation name: 'jcomet2'
+
+  // Load local lib
+  implementation fileTree(dir: 'lib', include: '*.jar')
+
+  testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+  testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
+  testImplementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+}
+
+jar {
+  // Specify App's entry point
+  manifest {
+    attributes "Main-Class": "enshud.Main"
+  }
+  // Include all dependent jars
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+
+// Global test parameters
+tasks.withType(Test) {
+
+  // Avoid UP-TO-DATE failure because of gradle caching on Jenkins.
+  outputs.upToDateWhen { false }
+
+  // Assume build is success when test failure occurs on Jenkins.
+  ignoreFailures = true
+}
+
+// Define custom tasks for each sub package
+task "s0.trial"(type: Test) { // Use string literal as function name to use dot in task name
+  include 'enshud/s0/**'
+}
+
+task "s1.lexer"(type: Test) {
+  include 'enshud/s1/**'
+}
+
+task "s2.parser"(type: Test) {
+  include 'enshud/s2/**'
+}
+
+task "s3.checker"(type: Test) {
+  include 'enshud/s3/**'
+}
+
+task "s4.compiler"(type: Test) {
+  include 'enshud/s4/**'
+}
+
+// Workaround to use UTF-8 on gradle eclipse plugin
+// https://github.com/gradle/gradle/issues/898
+eclipseJdt.doLast {
+    File f = file('.settings/org.eclipse.core.resources.prefs')
+    f.write('eclipse.preferences.version=1\n')
+    f.append('encoding/<project>=UTF-8')
+}
